@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Highlights</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #420079, #000000);
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            margin-bottom: 20px;
+        }
+
+        #title {
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+
+        #description {
+            font-size: 1.2rem;
+            margin-top: 10px;
+        }
+
+        #countdown-timer {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-top: 30px;
+            color: #6f00ff;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+            width: 100%;
+            max-width: 600px;
+        }
+
+        #staff-voting {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 500px;
+            margin: 20px auto;
+        }
+
+        #vote-title {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+
+        .form-select {
+            padding: 10px;
+            font-size: 1.1rem;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            border: none;
+        }
+
+        #vote-button {
+            background-color: #9b4d97;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        #vote-button:hover {
+            background-color: #7a3f74;
+        }
+
+        #vote-message {
+            background-color: #ff4040;
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            text-align: center;
+            margin-top: 20px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .charts-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        canvas {
+            max-width: 100%;
+            height: 250px;
+        }
+
+        /* Estilo do header */
+        header {
+            width: 100%;
+            text-align: center;
+            position: relative;
+            padding-top: 20px;
+        }
+
+        /* Estilo do botão para voltar à home */
+        #back-to-home {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            padding: 10px 20px;
+            color: #ffffff;
+            /* Cor do texto */
+            font-size: 1rem;
+            font-weight: bold;
+            text-decoration: none;
+            background-color: transparent;
+            /* Sem cor de fundo */
+            border: none;
+            /* Sem borda */
+            box-shadow: none;
+            /* Sem sombra */
+        }
+
+        #back-to-home:hover {
+            color: #9b4d97;
+            /* Mudança de cor no hover */
+        }
+
+        /* Estilo do título */
+        #title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-top: 30px;
+            /* Dá espaço entre o botão e o título */
+        }
+
+        /* Estilo da descrição */
+        #description {
+            font-size: 1.2rem;
+            margin-top: 10px;
+        }
+
+        footer {
+            padding: 15px 0;
+            text-align: center;
+            width: 100%;
+            font-size: 1rem;
+            border-top: 1px solid #ddd;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="home.html" id="back-to-home" class="btn btn-primary">Back to Home</a>
+        <h1 id="title">Community Highlights</h1>
+        <p id="description">Celebrating the best contributors in our Discord community!</p>
+    </header>
+
+    <!-- Contador de tempo até sábado às 18h -->
+    <div id="countdown-timer">...</div>
+
+    <main class="container">
+        <section id="staff-voting">
+            <h2 class="mb-4" id="vote-title">Vote for Staff Member of the Month</h2>
+            <form id="voting-form">
+                <div class="mb-3">
+                    <label for="staff-select" class="form-label" id="staff-label">Select Staff Member:</label>
+                    <select id="staff-select" class="form-select">
+                        <option value="g.walter_loq.616">g.walter_loq.616</option>
+                        <option value="gamer777ops">gamer777ops</option>
+                        <option value="baluxp">baluxp</option>
+                        <option value="candy_16">candy_16</option>
+                        <option value="clomer_dash">clomer_dash</option>
+                        <option value="coelhosad62">coelhosad62</option>
+                        <option value="crazy_0220">crazy_0220</option>
+                        <option value="herestheinker">herestheinker</option>
+                        <option value="lairtonx">lairtonx</option>
+                        <option value="l.anz">l.anz</option>
+                        <option value="lolizinha7542">lolizinha7542</option>
+                        <option value="markovisc">markovisc</option>
+                        <option value="isagi_y">isagi_y</option>
+                        <option value="xyzgoat">xyzgoat</option>
+                        <option value="zbiscoitts">zbiscoitts</option>
+                    </select>
+                </div>
+                <button type="button" class="btn" onclick="submitVote()" id="vote-button">Vote</button>
+            </form>
+        </section>
+
+        <div id="vote-message" style="display: none;">
+            <p>You have already voted! Please wait until the timer resets.
+                <span id="time-to-vote"></span>
+            </p>
+        </div>
+
+        <section id="vote-results" class="mt-4">
+            <h3>Vote Results</h3>
+            <div class="charts-container">
+                <!-- Gráficos lado a lado -->
+                <div>
+                    <h4>Votes Over the Week</h4>
+                    <canvas id="lineChart"></canvas>
+                </div>
+                <div>
+                    <h4>Vote Distribution</h4>
+                    <canvas id="barChart"></canvas>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Arcade Lunar Community. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const voteCounts = JSON.parse(localStorage.getItem('voteCounts')) || {
+            "g.walter_loq.616": 0,
+            "gamer777ops": 0,
+            "baluxp": 0,
+            "candy_16": 0,
+            "clomer_dash": 0,
+            "coelhosad62": 0,
+            "crazy_0220": 0,
+            "herestheinker": 0,
+            "lairtonx": 0,
+            "l.anz": 0,
+            "lolizinha7542": 0,
+            "markovisc": 0,
+            "isagi_y": 0,
+            "xyzgoat": 0,
+            "zbiscoitts": 0
+        };
+
+        const votesByDay = JSON.parse(localStorage.getItem('votesByDay')) || {
+            "Monday": 0,
+            "Tuesday": 0,
+            "Wednesday": 0,
+            "Thursday": 0,
+            "Friday": 0,
+            "Saturday": 0,
+            "Sunday": 0
+        };
+        const updateChart = () => {
+            const lineCtx = document.getElementById('lineChart').getContext('2d');
+            const barCtx = document.getElementById('barChart').getContext('2d');
+
+            // Gráfico de linha (votos ao longo da semana)
+            const lineChart = new Chart(lineCtx, {
+                type: 'line',
+                data: {
+                    labels: Object.keys(votesByDay),
+                    datasets: [{
+                        label: 'Votes per Day',
+                        data: Object.values(votesByDay),
+                        borderColor: '#ffffff', // Cor mais visível
+                        tension: 0.1,
+                        fill: false
+                    }]
+                },
+                options: {
+                    animation: {
+                        duration: 1000, // Animação do gráfico
+                        easing: 'easeOutBounce' // Tipo de animação
+                    }
+                }
+            });
+
+            // Gráfico de barras horizontais (distribuição de votos por staff)
+            const barChart = new Chart(barCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Staff 1', 'Staff 2', 'Staff 3'],
+                    datasets: [{
+                        data: [voteCounts.staff1, voteCounts.staff2, voteCounts.staff3],
+                        backgroundColor: ['#7f5fc6', '#9b4d97', '#e6b800'],
+                    }]
+                },
+                options: {
+                    indexAxis: 'y', // Gráfico de barras horizontais
+                    responsive: true,
+                    scales: {
+                        x: {
+                            beginAtZero: true
+                        }
+                    },
+                    animation: {
+                        duration: 1000, // Animação de atualização
+                        easing: 'easeInOutQuad' // Tipo de animação
+                    }
+                }
+            });
+
+            // Exibe o staff com mais votos
+            const staffNames = ['Staff 1', 'Staff 2', 'Staff 3'];
+            const staffVotes = [voteCounts.staff1, voteCounts.staff2, voteCounts.staff3];
+            const maxVotes = Math.max(...staffVotes);
+            const maxIndex = staffVotes.indexOf(maxVotes);
+            const maxVotedStaff = staffNames[maxIndex];
+            document.getElementById('most-voted-staff').innerText = `Most Voted: ${maxVotedStaff} with ${maxVotes} votes`;
+        };
+
+        const submitVote = () => {
+            const selectedStaff = document.getElementById('staff-select').value;
+            const now = new Date().getTime();
+            const lastVoteTime = localStorage.getItem('lastVoteTime');
+            const dayOfWeek = new Date().toLocaleString('en-US', { weekday: 'long' });
+
+            // Atualiza a contagem de votos por dia
+            votesByDay[dayOfWeek]++;
+            localStorage.setItem('votesByDay', JSON.stringify(votesByDay));
+
+            if (lastVoteTime && now - lastVoteTime < 12 * 60 * 60 * 1000) {
+                const nextVoteTime = parseInt(lastVoteTime) + (12 * 60 * 60 * 1000);
+                const timeRemaining = nextVoteTime - now;
+                const hours = Math.floor(timeRemaining / (1000 * 60 * 60));
+                const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+                document.getElementById('vote-message').style.display = 'block';
+                document.getElementById('time-to-vote').innerText = `${hours} hours ${minutes} minutes`;
+            } else {
+                // Aumenta a contagem de votos
+                voteCounts[selectedStaff]++;
+                localStorage.setItem('voteCounts', JSON.stringify(voteCounts));
+                localStorage.setItem('lastVoteTime', now.toString());
+                updateChart();
+            }
+        };
+
+        // Inicia o contador para sábado às 18h
+        const countdownToSaturday = () => {
+            const now = new Date();
+            const saturday = new Date();
+            saturday.setDate(now.getDate() + (6 - now.getDay()));
+            saturday.setHours(18, 0, 0, 0); // Sábado às 18h
+
+            const countdownInterval = setInterval(() => {
+                const remainingTime = saturday - new Date();
+                if (remainingTime <= 0) {
+                    clearInterval(countdownInterval);
+                    document.getElementById('countdown-timer').innerHTML = 'The time has arrived!';
+                    // Resetando votos no final de cada semana
+                    resetVotes();
+                } else {
+                    const days = Math.floor(remainingTime / (1000 * 60 * 60 * 24));
+                    const hours = Math.floor((remainingTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    const minutes = Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60));
+                    const seconds = Math.floor((remainingTime % (1000 * 60)) / 1000);
+                    document.getElementById('countdown-timer').innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+                }
+            }, 1000);
+        };
+
+        const resetVotes = () => {
+            // Resetando votos ao final da semana (sábado às 18h)
+            g.walter_loq = 0;
+            gamer777ops = 0;
+            baluxp = 0;
+            candy_16 = 0;
+            clomer_dash = 0;
+            coelhosad62 = 0;
+            crazy_0220 = 0;
+            herestheinker = 0;
+            lairtonx = 0;
+            l.anz = 0;
+            lolizinha7542 = 0;
+            markovisc = 0;
+            isagi_y = 0;
+            xyzgoat = 0;
+            zbiscoitts = 0;
+            localStorage.setItem('voteCounts', JSON.stringify(voteCounts));
+            updateChart(); // Atualiza o gráfico após o reset
+        };
+
+        countdownToSaturday();
+        updateChart();
+    </script>
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome - Community Highlights</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background:
+                linear-gradient(135deg, rgba(0, 0, 0), rgb(42, 0, 158, 0.8)),
+                /* Transparent gradient */
+                url('image/al.png');
+            /* Replace with your image path */
+            background-size: cover;
+            background-position: center;
+            color: white;
+            font-family: 'Arial', sans-serif;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+
+        .container {
+            text-align: center;
+        }
+
+        .card {
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            border: none;
+            margin: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-radius: 10px;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-img-top {
+            width: 60%;
+            /* Image width is set to 60% */
+            height: auto;
+            /* Maintains the image's aspect ratio */
+            object-fit: cover;
+            border-radius: 10px 10px 0 0;
+            margin: 20px auto 0;
+            /* Centers the image horizontally and adds a top margin */
+            display: block;
+            /* Ensures the image is treated as a block */
+        }
+
+        .btn-custom {
+            background-color: #9b4d97;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+            border-radius: 5px;
+        }
+
+        .btn-custom:hover {
+            background-color: #7f5fc6;
+        }
+
+        footer {
+            padding: 15px 0;
+            text-align: center;
+            width: 100%;
+            font-size: 1rem;
+            border-top: 1px solid #ddd;
+            margin-top: 20px;
+        }
+
+        .card-deck {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .display-4 {
+            font-size: 3rem;
+            font-weight: bold;
+        }
+
+        .card-body {
+            padding: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="display-4 mb-4">Welcome to Community Highlights</h1>
+        <div class="card-deck">
+            <!-- Card 1: Vote for Staff of the Week -->
+            <div class="card" style="width: 18rem;">
+                <img src="image/Staff.png" class="card-img-top" alt="Vote for Staff">
+                <div class="card-body">
+                    <h5 class="card-title">Vote for Staff of the Week</h5>
+                    <p class="card-text">Participate in our voting system and actively help choose the Staff of the
+                        Week!</p>
+                    <a href="vote.html" class="btn-custom">Vote Now</a>
+                </div>
+            </div>
+
+            <!-- Card 2: Featured Members -->
+            <div class="card" style="width: 18rem;">
+                <img src="image/PODIUM.png" class="card-img-top" alt="Featured Members">
+                <div class="card-body">
+                    <h5 class="card-title">Featured Members</h5>
+                    <p class="card-text">Check out the most engaged members and learn how you can stand out!</p>
+                    <a href="podium.html" class="btn-custom">See Members</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Arcade Lunar Community. All rights reserved.</p>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
