@@ -36,17 +36,16 @@
         }
 
         .podium-section {
-            margin-top: 40px;
-            padding: 20px;
-            border-radius: 15px;
-            width: 100%;
-            max-width: 500px;
-            margin: 20px auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
         }
 
-  .images-container {
+        .images-container {
             display: flex;
-            justify-content: space-around;
+            justify-content: center;
+            /* Altera para centralizar os itens */
             flex-wrap: wrap;
             gap: 20px;
         }
@@ -57,8 +56,6 @@
             object-fit: cover;
             border-radius: 8px;
         }
-
-
 
         /* Estilo do header */
         header {
@@ -189,65 +186,65 @@
     <!-- Contador de tempo até sábado às 18h -->
     <div id="countdown-timer">...</div>
 
-    
-   <!-- Podiums -->
-<section id="podiums" class="podium-section">
-    <h2 class="mb-4">Top Contributors</h2>
-    <h3>Messages</h3>
-    <div class="images-container" style="display: flex; align-items: center;">
-        <!-- Image for Top Message Contributors -->
-        <img class="image" src="destacmsg.png" alt="Top Msg">
 
-        <h3>Voice</h3>
-        <!-- Image for Top Call Participants -->
-        <!-- <img class="image" src="Destac.png" alt="Top Voice" style="margin-left: 10px;">-->
-       
-    </div>
-</section>
+    <!-- Podiums -->
+    <section id="podiums" class="podium-section">
+        <h2 class="mb-4">Top Contributors</h2>
+        <h3>Messages</h3>
+        <div class="images-container"
+            style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+            <!-- Image for Top Message Contributors -->
+            <img class="image" src="destacmsg.png" alt="Top Msg" style="margin-bottom: 10px;">
+
+            <h3>Voice</h3>
+            <!-- Image for Top Call Participants -->
+            <img class="image" src="destacvoice.png" alt="Top Voice" style="margin-top: 10px;">
+        </div>
+    </section>
 
     <footer>
         <p>&copy; 2024 Arcade Lunar Community. All rights reserved.</p>
     </footer>
 
     <script>
-       // Define the target date: 7th December at 18:00
-       const targetDate = new Date("2024-12-07T18:00:00");
-    
-    // Update the countdown every second
-    const countdownTimer = document.getElementById("countdown-timer");
+        // Define the target date: 7th December at 18:00
+        const targetDate = new Date("2024-12-07T18:00:00");
 
-    function updateCountdown() {
-        const now = new Date();
-        const timeRemaining = targetDate - now;
+        // Update the countdown every second
+        const countdownTimer = document.getElementById("countdown-timer");
 
-        if (timeRemaining <= 0) {
-            countdownTimer.innerHTML = "The event has started!";
-            clearInterval(countdownInterval);
-        } else {
-            const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+        function updateCountdown() {
+            const now = new Date();
+            const timeRemaining = targetDate - now;
 
-            let countdownText = "";
-            
-            if (days > 0) {
-                countdownText += `${days}d `;
+            if (timeRemaining <= 0) {
+                countdownTimer.innerHTML = "The event has started!";
+                clearInterval(countdownInterval);
+            } else {
+                const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+
+                let countdownText = "";
+
+                if (days > 0) {
+                    countdownText += `${days}d `;
+                }
+                if (hours > 0 || days > 0) {
+                    countdownText += `${hours}h `;
+                }
+                if (minutes > 0 || hours > 0 || days > 0) {
+                    countdownText += `${minutes}m `;
+                }
+                countdownText += `${seconds}s`;
+
+                countdownTimer.innerHTML = countdownText;
             }
-            if (hours > 0 || days > 0) {
-                countdownText += `${hours}h `;
-            }
-            if (minutes > 0 || hours > 0 || days > 0) {
-                countdownText += `${minutes}m `;
-            }
-            countdownText += `${seconds}s`;
-
-            countdownTimer.innerHTML = countdownText;
         }
-    }
 
-    // Update the countdown every 1000 milliseconds (1 second)
-    const countdownInterval = setInterval(updateCountdown, 1000);
+        // Update the countdown every 1000 milliseconds (1 second)
+        const countdownInterval = setInterval(updateCountdown, 1000);
     </script>
 
 </body>
