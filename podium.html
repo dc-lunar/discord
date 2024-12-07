@@ -44,20 +44,19 @@
             margin: 20px auto;
         }
 
-.images-container {
-    display: flex;
-    justify-content: center; /* Centraliza as imagens */
-    flex-wrap: wrap;
-    gap: 20px;
-}
+  .images-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
 
-.image {
-    width: 100%; /* A largura é 100% do contêiner */
-    max-width: 1200px; /* Agora as imagens podem ter até 1200px de largura */
-    height: auto; /* A altura se ajusta automaticamente */
-    object-fit: cover; /* Garante que a imagem cubra completamente a área */
-    border-radius: 8px;
-}
+        .image {
+            width: 900px;
+            height: 550px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
 
 
 
@@ -197,7 +196,7 @@
     <h3>Messages</h3>
     <div class="images-container" style="display: flex; align-items: center;">
         <!-- Image for Top Message Contributors -->
-        <img class="image" src="destacmsg.png" alt="Top Msg" style="margin-right: 10px;">
+        <img class="image" src="destacmsg.png" alt="Top Msg">
 
         <h3>Voice</h3>
         <!-- Image for Top Call Participants -->
