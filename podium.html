@@ -44,19 +44,21 @@
             margin: 20px auto;
         }
 
-        .images-container {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
+       .images-container {
+    display: flex;
+    justify-content: center; /* Alinha as imagens no centro */
+    flex-wrap: wrap;
+    gap: 20px;
+}
 
-        .image {
-            width: 900px;
-            height: 550px;
-            object-fit: cover;
-            border-radius: 8px;
-        }
+.image {
+    width: 100%; /* Isso vai permitir que a imagem seja responsiva */
+    max-width: 900px; /* Define um tamanho máximo para a imagem */
+    height: auto; /* Ajusta a altura proporcionalmente */
+    object-fit: cover;
+    border-radius: 8px;
+}
+
 
         /* Estilo do header */
         header {
