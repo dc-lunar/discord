@@ -222,44 +222,55 @@
     </footer>
 
     <script>
-        // Define the target date: 7th December at 18:00
-        const targetDate = new Date("2024-12-07T18:00:00");
+        // Atualiza o cronômetro cíclico
+const countdownTimer = document.getElementById("countdown-timer");
+let targetDate = getNextSaturday(18);
 
-        // Update the countdown every second
-        const countdownTimer = document.getElementById("countdown-timer");
+// Obtém a data do próximo sábado às 18h
+function getNextSaturday(hour) {
+    const now = new Date();
+    const dayOfWeek = now.getDay(); // 0 para domingo, 6 para sábado
+    const daysUntilSaturday = (6 - dayOfWeek + (dayOfWeek === 6 && now.getHours() >= hour ? 7 : 0)) % 7;
+    const nextSaturday = new Date(now);
+    nextSaturday.setDate(now.getDate() + daysUntilSaturday);
+    nextSaturday.setHours(hour, 0, 0, 0);
+    return nextSaturday;
+}
 
-        function updateCountdown() {
-            const now = new Date();
-            const timeRemaining = targetDate - now;
+function updateCountdown() {
+    const now = new Date();
+    const timeRemaining = targetDate - now;
 
-            if (timeRemaining <= 0) {
-                countdownTimer.innerHTML = "The event has started!";
-                clearInterval(countdownInterval);
-            } else {
-                const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
-
-                let countdownText = "";
-
-                if (days > 0) {
-                    countdownText += `${days}d `;
-                }
-                if (hours > 0 || days > 0) {
-                    countdownText += `${hours}h `;
-                }
-                if (minutes > 0 || hours > 0 || days > 0) {
-                    countdownText += `${minutes}m `;
-                }
-                countdownText += `${seconds}s`;
-
-                countdownTimer.innerHTML = countdownText;
-            }
+    if (timeRemaining <= 0) {
+        // Cronômetro chega a 0
+        if (now.getHours() === 18 && now.getMinutes() === 0) {
+            countdownTimer.innerHTML = "O evento começou! Aguardando ajuste para 19h...";
+        } else if (now.getHours() === 19 && now.getMinutes() === 0) {
+            // Ajusta para o próximo sábado às 18h
+            targetDate = getNextSaturday(18);
+            countdownTimer.innerHTML = "Ajustando para o próximo sábado às 18h...";
+        } else {
+            countdownTimer.innerHTML = "Aguardando ajuste...";
         }
+    } else {
+        // Calcula o tempo restante
+        const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
 
-        // Update the countdown every 1000 milliseconds (1 second)
-        const countdownInterval = setInterval(updateCountdown, 1000);
+        let countdownText = "";
+        if (days > 0) countdownText += `${days}d `;
+        if (hours > 0 || days > 0) countdownText += `${hours}h `;
+        if (minutes > 0 || hours > 0 || days > 0) countdownText += `${minutes}m `;
+        countdownText += `${seconds}s`;
+
+        countdownTimer.innerHTML = countdownText;
+    }
+}
+
+// Atualiza o cronômetro a cada segundo
+setInterval(updateCountdown, 1000);
     </script>
 
 </body>
